@@ -1,0 +1,4 @@
+backend:
+  image:
+    repository: chimdi247/edu-backend
+    tag: "backend-8ef1766"
