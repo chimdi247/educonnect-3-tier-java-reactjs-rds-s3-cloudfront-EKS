@@ -12,7 +12,7 @@ resource "aws_cloudfront_distribution" "edu-frontend-cdn" {
     origin_access_control_id = aws_cloudfront_origin_access_control.default-oac.id
   }
 
-  aliases = ["educonnect.vhbj.site"]
+  aliases = ["educonnect.wsedf.online"]
 
   enabled = true
   is_ipv6_enabled = true

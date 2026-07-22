@@ -11,12 +11,12 @@ metadata:
     alb.ingress.kubernetes.io/success-codes: "200"
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80},{"HTTPS":443}]'
     alb.ingress.kubernetes.io/ssl-redirect: '443'
-    #alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:762233727039:certificate/bd07d281-b813-4b0b-a06f-389f094cf967
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:eu-west-2:319602347522:certificate/7f0ba365-653f-492a-ba99-90f86914c7e8
 
 spec:
   ingressClassName: alb
   rules:
-    - host: edubackend.vhbj.site
+    - host: edubackend.wsedf.online
       http:
         paths:
           - path: /
