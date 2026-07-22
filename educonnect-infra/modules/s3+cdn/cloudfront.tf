@@ -61,7 +61,7 @@ resource "aws_cloudfront_distribution" "edu-frontend-cdn" {
   }
 
   viewer_certificate {
-    acm_certificate_arn = data.aws_acm_certificate.my_cert.arn
+    acm_certificate_arn = aws_acm_certificate_validation.cloudfront_cert_validation.certificate_arn
     ssl_support_method = "sni-only"
   }
 

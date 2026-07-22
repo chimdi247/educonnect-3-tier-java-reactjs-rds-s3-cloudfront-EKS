@@ -6,9 +6,9 @@ module "vpc-module" {
 module "eks-module" {
   source = "./modules/eks"
 
-  worker-subnet-ids        = module.vpc-module.worker-subnet-ids
-  region                   = var.region
-  vpc_id                   = module.vpc-module.vpc_id
+  worker-subnet-ids = module.vpc-module.worker-subnet-ids
+  region            = var.region
+  vpc_id            = module.vpc-module.vpc_id
 }
 
 module "rds-module" {
@@ -22,14 +22,18 @@ module "rds-module" {
 module "iam-module" {
   source = "./modules/iam"
 
-  oidc_arn = module.eks-module.oidc-arn
-  oidc_url = module.eks-module.oidc-url
-  region = var.region
-  vpc_id = module.vpc-module.vpc_id
+  oidc_arn     = module.eks-module.oidc-arn
+  oidc_url     = module.eks-module.oidc-url
+  region       = var.region
+  vpc_id       = module.vpc-module.vpc_id
   cluster_name = module.eks-module.cluster_name
 
 }
 
 module "s3_cdn_module" {
   source = "./modules/s3+cdn"
+  providers = {
+    aws           = aws
+    aws.us_east_1 = aws.us_east_1
+  }
 }

@@ -2,8 +2,9 @@
 terraform {
   required_providers {
     aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.0"
+      source                = "hashicorp/aws"
+      version               = "~> 6.0"
+      configuration_aliases = [aws.us_east_1]
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
@@ -17,11 +18,11 @@ terraform {
   }
 
   backend "s3" {
-    bucket         = "educonnect-remote-chimdi"
-    key            = "terraform.tfstate"
-    use_lockfile   = true
-    region         = "eu-west-2"
-    encrypt        = true
+    bucket       = "educonnect-remote-chimdi"
+    key          = "terraform.tfstate"
+    use_lockfile = true
+    region       = "eu-west-2"
+    encrypt      = true
   }
 }
 
@@ -29,6 +30,11 @@ terraform {
 
 provider "aws" {
   region = var.region
+}
+
+provider "aws" {
+  alias  = "us_east_1"
+  region = "us-east-1"
 }
 
 # provider "kubernetes" {
